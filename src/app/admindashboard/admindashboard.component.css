@@ -1,0 +1,16 @@
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    
+}
+.options a{
+    margin-top: 10px;
+}
+.options {
+    padding-left: 10px;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}

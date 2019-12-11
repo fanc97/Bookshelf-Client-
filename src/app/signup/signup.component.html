@@ -1,0 +1,139 @@
+<div class="signF">
+<!--     
+<form #userForm="ngForm">
+        <h3>Sign In</h3>
+    <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="user.firstName" name="firstName">
+    </div>
+    <div class="form-group">
+        <label for="last-name">Last Name</label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="user.email" name="email">
+    </div>
+    <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="user.username" name="username">
+        </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password">
+    </div>
+    <div class="form-group">
+        <label for="phone-number">Phone number</label>
+        <input type="text" class="form-control" id="phone-number" [(ngModel)]="user.phoneNumber" name="phoneNumber">
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-primary" (click)="saveUser(user,userForm)">Submit</button>
+    </div>
+</form> -->
+<form [formGroup]="reactiveForm">
+        <h2>Person</h2>
+        <div class="alert alert-success" *ngIf="message">
+            {{message}}
+        </div>
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" class="form-control" id="firstName" formControlName="firstName" name="firstName">
+      <div *ngIf="reactiveForm.controls.firstName.errors && (reactiveForm.controls.firstName.touched || reactiveForm.controls.firstName.dirty)" style="color:red">
+        <div *ngIf="reactiveForm.hasError('required','firstName')">
+          First Name is required
+        </div>
+        <div *ngIf="reactiveForm.hasError('pattern','firstName')">
+          First Name is invalid format
+        </div>
+        <div *ngIf="reactiveForm.hasError('minlength','firstName')">
+          First Name must be 3 characters long
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" formControlName="lastName" name="lastName">
+      <div *ngIf="reactiveForm.controls.lastName.errors && (reactiveForm.controls.lastName.touched || reactiveForm.controls.lastName.dirty)" style="color:red">
+        <div *ngIf="reactiveForm.hasError('required','lastName')">
+          Last Name is required
+        </div>
+        <div *ngIf="reactiveForm.hasError('pattern','lastName')">
+          Last Name is invalid format
+        </div>
+        <div *ngIf="reactiveForm.hasError('minlength','lastName')">
+          Last Name must be 2 characters long
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="text" class="form-control" id="email" formControlName="email" name="email">
+        <div *ngIf="reactiveForm.controls.email.errors && (reactiveForm.controls.email.touched || reactiveForm.controls.email.dirty)" style="color:red">
+          <div *ngIf="reactiveForm.hasError('required','email')">
+            Email is required
+          </div>
+          <div *ngIf="reactiveForm.hasError('pattern','email')">
+            Email is invalid format
+          </div>
+          
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="username">Username :</label>
+          <input type="text" class="form-control" id="username" formControlName="username" name="username">
+          <div *ngIf="reactiveForm.controls.username.errors && (reactiveForm.controls.username.touched || reactiveForm.controls.username.dirty)" style="color:red">
+            <div *ngIf="reactiveForm.hasError('required','username')">
+                Username  is required
+            </div>
+            <div *ngIf="reactiveForm.hasError('pattern','username')">
+                Username  is invalid format
+            </div>
+            <div *ngIf="reactiveForm.hasError('minlength','username')">
+                Username  must be 3 characters long
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password :</label>
+            <input type="password" class="form-control" id="password" formControlName="password" name="password">
+            <div *ngIf="reactiveForm.controls.password.errors && (reactiveForm.controls.password.touched || reactiveForm.controls.password.dirty)" style="color:red">
+              <div *ngIf="reactiveForm.hasError('required','password')">
+                Password  is required
+              </div>
+              <div *ngIf="reactiveForm.hasError('pattern','password')">
+                Password  is invalid format
+              </div>
+              <div *ngIf="reactiveForm.hasError('minlength','password')">
+                Password  must be 8 characters long
+              </div>
+            </div>
+          </div>
+      
+      <div class="form-group">
+        <label for="phoneNumber">Phone :</label>
+        <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" name="phoneNumber">
+        <div *ngIf="reactiveForm.controls.phoneNumber.errors && (reactiveForm.controls.phoneNumber.touched || reactiveForm.controls.phoneNumber.dirty)" style="color:red">
+          <div *ngIf="reactiveForm.hasError('required','phoneNumber')">
+            Phone is required
+          </div>
+          <div *ngIf="reactiveForm.hasError('pattern','phoneNumber')">
+            Phone is invalid format
+          </div>
+          <div *ngIf="reactiveForm.hasError('minlength','phoneNumber')">
+            Phone must be 10 digits
+          </div>
+          <div *ngIf="reactiveForm.hasError('maxlength','phoneNumber')">
+            Phone must be less 14 digits
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="file">File :</label>
+          <input type="file" class="form-control" accept="image/*" (change)="onSelectFile($event)" style="height: 100%;">
+      </div>
+    <!-- <button type="submit" class="btn btn-primary" [disabled]="!reactiveForm.valid" > Disabled Submit</button> -->
+    <button type="submit" class="btn btn-primary"(click)="saveForm(reactiveForm)" >Submit</button>
+  </form>
+
+</div>

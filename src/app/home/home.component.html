@@ -1,0 +1,43 @@
+<div class="cont">
+    <div class="contForm">
+    <div class="searchForm">
+        <form (ngSubmit)="getBookByTitleAndAuthor()">
+                <label >Title:</label>
+                <input type="text" name="title" #title class="form-control">
+                <label>Author:</label>
+                <input   type="text" name="author" class="form-control" #author >
+                <button type="submit" class="btn btn-success float-right">Search</button>
+        
+        </form>
+    </div>
+    </div>
+<div class="showTable">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Author</th>
+                        <th class="text-center">in Stock</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let book of books">
+                        <td class="text-center">{{book.title}}</td>
+                        <td class="text-center">{{book.author}}</td>
+                        <td class="text-center">{{book.inStok}}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+<hr>
+<div class="lista">
+<ul  class="nav nav-pills">
+    <li class="nav-item" *ngFor="let p of pages;let i=index">
+        <a class="nav-link" href="" (click)="setPage(i,$event)">{{i}}</a>
+    </li>
+</ul>
+</div>
+</div>

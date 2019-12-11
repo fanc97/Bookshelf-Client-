@@ -1,0 +1,22 @@
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    
+}
+.options a{
+    margin-top: 10px;
+}
+.options {
+    padding-left: 10px;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+.addF{
+    margin: 0 auto;
+}
+.addF h3{
+    margin: 10px 0 20px 0;
+}

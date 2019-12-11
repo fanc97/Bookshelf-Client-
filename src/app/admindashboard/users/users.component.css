@@ -1,0 +1,41 @@
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    
+}
+.options a{
+    margin-top: 10px;
+}
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.table{
+    margin: 10px;
+    width: 1100px;
+}
+
+.lista{
+    display: flex;
+    justify-content: space-around;
+}
+.searchForm{
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.searchForm form{
+    display: flex;
+}
+.contForm{
+    width: 100%;
+}
+.photo{
+    max-height: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    min-width: 150px;
+}

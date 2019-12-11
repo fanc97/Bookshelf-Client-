@@ -1,0 +1,9 @@
+.loginF{
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.loginF form h3{
+    margin-bottom: 30px;
+}

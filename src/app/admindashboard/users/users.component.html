@@ -1,0 +1,58 @@
+<div class="content">
+<nav class="options">
+        <a routerLink="/admindashboard" class="btn btn-primary active" role="button" routerLinkActive="active">Dashdoard</a>
+        <a routerLink="../books" class="btn btn-primary active" role="button" routerLinkActive="active">Books</a>
+</nav>
+    <router-outlet></router-outlet>
+<div class="tableUsers">
+        <div class="contForm">
+                <div class="searchForm">
+                    <form (ngSubmit)="getUserByUsername()">
+                            <label >Username:</label>
+                            <input type="text" name="title" #username class="form-control">
+                            <button type="submit" class="btn btn-success float-right">Search</button>
+                    
+                    </form>
+                </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Username</th>
+                        <th class="text-center">Photo</th>
+                        <th class="text-center">Phone Number</th>
+                        <th class="text-center">Role</th>
+                        <th class="text-center">Edit role to</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let user of users">
+                        <td class="text-center">{{user.firstName}}</td>
+                        <td class="text-center">{{user.lastName}}</td>
+                        <td class="text-center">{{user.email}}</td>
+                        <td class="text-center">{{user.username}}</td>
+                        <td class="text-center"><img src="data:image/png;base64,{{user.photo}}" class="photo"></td>
+                        <td class="text-center">{{user.phoneNumber}}</td>
+                        <td class="text-center">{{user.userAuthority[0].authority}}</td>
+                        <td class="text-center"><button (click)="editRole(user.id)"><i class="fa fa-user" style="font-size: 28px;" *ngIf="user.userAuthority[0].authority=='ROLE_ADMIN'"></i><i class="fas fa-user-secret" style="font-size: 28px;" *ngIf="user.userAuthority[0].authority=='ROLE_USER'"></i></button></td>
+                        <td class="text-center"><button (click)="deleteUser(user.id)"><i class="fa fa-trash" style="font-size: 28px;"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="lista">
+    <ul  class="nav nav-pills">
+        <li class="nav-item" *ngFor="let p of pages;let i=index">
+            <a class="nav-link" href="" (click)="setPage(i,$event)">{{i}}</a>
+        </li>
+    </ul>
+</div>

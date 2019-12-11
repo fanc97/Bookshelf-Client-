@@ -1,0 +1,84 @@
+<div class="content">
+<nav class="options">
+    <a routerLink="/admindashboard" class="btn btn-primary active" role="button" routerLinkActive="active">Dashdoard</a>
+    <a routerLink="../users" class="btn btn-primary active" role="button" routerLinkActive="active">Users</a>
+    <a routerLink="add" class="btn btn-primary active" role="button" routerLinkActive="active">Add Book</a>
+</nav>
+<router-outlet></router-outlet>
+    <div class="showTable">
+            <div class="contForm">
+                    <div class="searchForm">
+                        <form (ngSubmit)="getBookByTitleAndAuthor()">
+                                <label >Title:</label>
+                                <input type="text" name="title" #title class="form-control">
+                                <label>Author:</label>
+                                <input   type="text" name="author" class="form-control" #author >
+                                <button type="submit" class="btn btn-success float-right">Search</button>
+                        
+                        </form>
+                    </div>
+            </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Author</th>
+                        <th class="text-center">in Stock</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let book of books">
+                        <td class="text-center">{{book.title}}</td>
+                        <td class="text-center">{{book.author}}</td>
+                        <td class="text-center">{{book.inStok}}</td>
+                        <td class="text-center"><button (click)="clickForUpdate(book.id)"><i class="fa fa-edit" style="font-size: 28px;"></i></button></td>
+                        <td class="text-center"><button (click)="deleteBook(book.id)"><i class="fa fa-trash" style="font-size: 28px;"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <hr>
+<div class="lista">
+<ul  class="nav nav-pills">
+    <li class="nav-item" *ngFor="let p of pages;let i=index">
+        <a class="nav-link" href="" (click)="setPage(i,$event)">{{i}}</a>
+    </li>
+</ul>
+</div>
+   
+   
+    
+    <div class="form-Update" [hidden]="!forUpdate" style="width: 300px;">
+        <h1>Update Book</h1>
+    
+      <form (ngSubmit)="updateBook()">
+          
+        <div class="form-group">
+          <label for="title">title</label>
+          <input type="text" class="form-control" id="title" required [(ngModel)]="bookUpdate.title" name="title">
+        </div>
+     
+        <div class="form-group">
+          <label for="author">author</label>
+          <input type="text" class="form-control" id="author" required [(ngModel)]="bookUpdate.author" name="author">
+        </div>
+
+        <div class="form-group">
+            <label for="author">In Stock</label>
+            <input type="text" class="form-control" id="author" required [(ngModel)]="bookUpdate.inStok" name="inStok">
+          </div>
+     
+        <button type="submit" class="btn btn-success">Update</button>
+      </form>
+     
+    </div>
+    <div [hidden]="!updated">
+        <h4>You Updated successfully!</h4>
+        <button class="btn btn-success" (click)="finishUpdate()">Close</button>
+      </div>

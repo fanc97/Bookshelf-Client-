@@ -1,0 +1,22 @@
+.showTable{
+    display: flex;
+    justify-content: space-around;
+    max-height: 300px;
+    min-height: 300px;
+}
+.lista{
+    display: flex;
+    justify-content: space-around;
+}
+.searchForm{
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.searchForm form{
+    display: flex;
+}
+.contForm{
+    width: 100%;
+}

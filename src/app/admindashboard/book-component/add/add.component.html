@@ -1,0 +1,37 @@
+
+<div class="content">
+  <nav class="options">
+      <a routerLink="/admindashboard" class="btn btn-primary active" role="button" routerLinkActive="active">Dashdoard</a>
+      <a routerLink="/admindashboard/users" class="btn btn-primary active" role="button" routerLinkActive="active">Users</a>
+      <a routerLink="/admindashboard/books" class="btn btn-primary active" role="button" routerLinkActive="active">Books</a>
+  </nav>
+  <router-outlet></router-outlet>
+<div class="addF" [hidden]="submitted" style="width: 300px;">
+  <h3>Create Book</h3>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" required [(ngModel)]="book.title" name="title">
+    </div>
+ 
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input type="text" class="form-control" id="author" required [(ngModel)]="book.author" name="author">
+    </div>
+
+    <div class="form-group">
+      <label for="author">In Stock</label>
+      <input type="text" class="form-control" id="author" required [(ngModel)]="book.inStok" name="inStok">
+    </div>
+   
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+ 
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <button class="btn btn-success" (click)="newBook()">Add</button>
+</div>
+</div>
+
+
