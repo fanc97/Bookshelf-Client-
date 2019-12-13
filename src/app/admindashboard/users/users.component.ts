@@ -52,8 +52,8 @@ export class UsersComponent implements OnInit {
     },
     (error) => console.log(error));
   }
-  editRole(userId:number){
-    this.userService.editRole(userId,this.loginuser.token).subscribe((response)=>{
+  editRole(user){
+    this.userService.editRole(user.id,user,this.loginuser.token).subscribe((response)=>{
       this.getUsersPage();
     },
     (error) => console.log(error));

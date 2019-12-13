@@ -44,8 +44,8 @@ export class UserService {
     const headers = new HttpHeaders({'Authorization':'Bearer '+token});
     return this.http.delete(`http://localhost:8080/api/auth/delete/${id}`, {headers:headers})
   }
-  editRole(id:number,token:any):Observable<any>{
+  editRole(id:number,user,token:any):Observable<any>{
     const headers = new HttpHeaders({'Authorization':'Bearer '+token});
-    return this.http.get(`http://localhost:8080/api/auth/editrole/${id}`, {headers:headers})
+    return this.http.get(`http://localhost:8080/api/auth/editrole/${id}`,user, {headers:headers})
   }
 }

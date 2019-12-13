@@ -39,7 +39,7 @@
                         <td class="text-center"><img src="data:image/png;base64,{{user.photo}}" class="photo"></td>
                         <td class="text-center">{{user.phoneNumber}}</td>
                         <td class="text-center">{{user.userAuthority[0].authority}}</td>
-                        <td class="text-center"><button (click)="editRole(user.id)"><i class="fa fa-user" style="font-size: 28px;" *ngIf="user.userAuthority[0].authority=='ROLE_ADMIN'"></i><i class="fas fa-user-secret" style="font-size: 28px;" *ngIf="user.userAuthority[0].authority=='ROLE_USER'"></i></button></td>
+                        <td class="text-center"><button (click)="editRole(user)"><i class="fa fa-user" style="font-size: 28px;" *ngIf="user.userAuthority[0].authority=='ROLE_ADMIN'"></i><i class="fas fa-user-secret" style="font-size: 28px;" *ngIf="user.userAuthority[0].authority=='ROLE_USER'"></i></button></td>
                         <td class="text-center"><button (click)="deleteUser(user.id)"><i class="fa fa-trash" style="font-size: 28px;"></i></button></td>
                     </tr>
                 </tbody>
